@@ -1,0 +1,17 @@
+node_modules
+dist
+.git
+.env
+.env.*
+!.env.template
+coverage
+.temp
+.tmp
+logs
+*.log
+temp-docx-inspect
+temp-docx.zip
+*.rar
+*.session.sql
+.vscode
+.idea
