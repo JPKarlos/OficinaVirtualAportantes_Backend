@@ -1,0 +1,21 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 15,
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": false,
+                "encrypt": false,
+                "trustServerCertificate": false
+            },
+            "previewLimit": 50,
+            "server": "172.17.1.5",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "172.17.1.5",
+            "username": "production",
+            "password": "M@ll4m@5_2024",
+            "database": "SIRIS_EPS"
+        }
+    ]
+}

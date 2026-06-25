@@ -1,0 +1,10 @@
+export { QueryMunicipiosDto } from './query-municipios.dto';
+export { QueryDepartamentosDto } from './query-departamentos.dto';
+export { QueryCiiuClaseDto } from './query-ciiu-clase.dto';
+export { QueryTipoIdenContDto } from './query-tipo-iden-cont.dto';
+export { QueryClaseAportanteDto } from './query-clase-aportante.dto';
+export { QueryNaturalezaAportanteDto } from './query-naturaleza-aportante.dto';
+export { QueryTipoPersonaDto } from './query-tipo-persona.dto';
+export { QueryTipoAccionDto } from './query-tipo-accion.dto';
+export { QueryTipoAportanteContDto } from './query-tipo-aportante-cont.dto';
+export { QueryFormaPresentacionDto } from './query-forma-presentacion.dto';

@@ -1,0 +1,10 @@
+export { V_UltimaactualizacionAportantes } from './v_ultimaactualizacion.entity';
+export { V_AportanteAfiliados } from './v_aportante_afiliados.entity';
+export { V_ReporteCarteraUgppAfiliadoResumen } from './v_reporte-cartera-ugpp-afiliado-resumen.entity';
+export { V_ReporteCarteraUgppDetalladoNuevoProceso } from './v_reporte-cartera-ugpp-detallado-nuevo-proceso.entity';
+export { V_IncapacidadesAportante } from './v_incapacidades_aportante.entity';
+export { V_LicenciasAportante } from './v_licencias_aportante.entity';
+export { Solicitud } from './solicitud.entity';
+export { V_Solicitudes } from './v_solicitudes.entity';
+export { Aportante } from './aportantes.entity';
+export { UltimaActualizacionAportantes } from './ultima-actualizacion-aportantes.entity';

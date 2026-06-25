@@ -1,0 +1,10 @@
+export { Municipio } from './municipios.entity';
+export { Departamento } from './departamentos.entity';
+export { CiiuClase } from './ciiu-clase.entity';
+export { TipoIdenCont } from './tipo-iden-cont.entity';
+export { ClaseAportante } from './clase-aportante.entity';
+export { NaturalezaAportante } from './naturaleza-aportante.entity';
+export { TipoPersona } from './tipo-persona.entity';
+export { TipoAccion } from './tipo-accion.entity';
+export { TipoAportanteCont } from './tipo-aportante-cont.entity';
+export { FormaPresentacion } from './forma-presentacion.entity';
