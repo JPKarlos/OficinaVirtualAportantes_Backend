@@ -8,6 +8,7 @@ import { DataSourceConfig } from './config/data.source';
 import { EmailLogModule } from './common/email-log/email-log.module';
 import { AportantesModule } from './aportantes/aportantes.module';
 import { AccesoriaModule } from './accesoria/accesoria.module';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { AccesoriaModule } from './accesoria/accesoria.module';
     AportantesModule,
     AccesoriaModule,
   ],
-  controllers: [],
+  controllers: [HealthController],
   providers: [],
 })
 export class AppModule {}

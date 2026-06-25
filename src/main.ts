@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import {
   ClassSerializerInterceptor,
   Logger,
+  RequestMethod,
   ValidationPipe,
 } from '@nestjs/common';
 import * as express from 'express';
@@ -38,7 +39,9 @@ async function bootstrap() {
 
   app.useGlobalInterceptors(new ClassSerializerInterceptor(reflector));
 
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api', {
+    exclude: [{ path: 'health', method: RequestMethod.GET }],
+  });
 
   await app.listen(envs.port);
 
