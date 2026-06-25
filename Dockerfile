@@ -7,6 +7,11 @@ FROM node:24-alpine AS builder
 
 WORKDIR /app
 
+# Compilar deasync (dependencia nativa de aspnet-identity-pw)
+RUN apk add --no-cache python3 make g++
+
+ENV PYTHON=/usr/bin/python3
+
 # Copiar archivos de dependencias
 COPY package.json package-lock.json ./
 
