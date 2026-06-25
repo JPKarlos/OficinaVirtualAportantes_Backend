@@ -44,7 +44,7 @@ async function bootstrap() {
     res.status(200).json({ status: 'ok' });
   });
 
-  await app.listen(envs.port);
+  await app.listen(envs.port, '0.0.0.0');
 
   logger.log(`${APP_NAME} running on port ${envs.port}`);
   logger.log(`Ultima Actualización: "01 Ago 2025"`);

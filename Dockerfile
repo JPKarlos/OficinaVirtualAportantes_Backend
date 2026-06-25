@@ -48,17 +48,17 @@ COPY --from=builder --chown=nestjs:nodejs /app/package.json ./
 
 # Variables de entorno por defecto
 ENV NODE_ENV=production
-ENV PORT=5009
+ENV PORT=5030
 
 # Exponer puerto
-EXPOSE 5009
+EXPOSE 5030
 
 # Cambiar a usuario no-root
 USER nestjs
 
-# Healthcheck para Dokploy
+# Healthcheck para Dokploy (usa $PORT para coincidir con la config del dominio)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:5009/health || exit 1
+    CMD sh -c 'wget --no-verbose --tries=1 --spider "http://127.0.0.1:${PORT}/health" || exit 1'
 
 # Comando de inicio
 CMD ["node", "dist/main.js"]
