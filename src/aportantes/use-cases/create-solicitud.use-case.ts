@@ -21,7 +21,7 @@ import {
 } from '../mappers/solicitud.mapper';
 
 const ESTADO_EN_TRAMITE_ID = 1;
-const TIPOS_NOVEDAD_VALIDOS = new Set([1, 2, 3, 4]);
+const TIPOS_NOVEDAD_VALIDOS = new Set([1, 2, 3, 4, 5]);
 
 export interface CreateSolicitudInput {
   aportanteId: number;
