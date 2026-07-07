@@ -79,7 +79,10 @@ export class CreateSolicitudUseCase {
       String(input.aportanteId);
 
     const carpeta = generateCarpetaSoportes(documentoAportante);
-    const basePath = envs.ftpPathSolicitudes.replace(/\\/g, '/').replace(/\/$/, '');
+    const basePath = envs.ftpPathSolicitudes
+      .trim()
+      .replace(/\\/g, '/')
+      .replace(/\/$/, '');
     const rutaSoportes = `${basePath}/${carpeta}`;
 
     const radicacion = generateRadicacion();

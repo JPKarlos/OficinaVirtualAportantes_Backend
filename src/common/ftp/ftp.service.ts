@@ -43,7 +43,10 @@ export class FtpService {
       );
     }
 
-    const normalizedFolder = relativeFolderPath.replace(/\\/g, '/');
+    const normalizedFolder = relativeFolderPath
+      .replace(/\\/g, '/')
+      .trim()
+      .replace(/\/$/, '');
 
     await this.withClient(async (client) => {
       await client.ensureDir(normalizedFolder);
@@ -51,7 +54,7 @@ export class FtpService {
       for (const file of files) {
         const safeName = this.sanitizeFileName(file.originalName);
         const stream = Readable.from(file.buffer);
-        await client.uploadFrom(stream, `${normalizedFolder}/${safeName}`);
+        await client.uploadFrom(stream, safeName);
       }
     });
 
