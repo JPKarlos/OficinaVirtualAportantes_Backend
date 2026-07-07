@@ -4,6 +4,7 @@ import {
   CreateAportanteUseCase,
   GetAportanteByIdUseCase,
   UpdateAportanteUseCase,
+  UpdateMisDatosAportanteUseCase,
   GetAportanteAfiliadosByAportanteIdUseCase,
   GetMoraByAportanteIdUseCase,
   GenerateCertificadoPazYSalvoUseCase,
@@ -22,6 +23,7 @@ export class AportantesService {
     private readonly getUltimaActualizacionAportanteByIdUseCase: GetUltimaActualizacionAportanteByIdUseCase,
     private readonly getAportanteByIdUseCase: GetAportanteByIdUseCase,
     private readonly updateAportanteUseCase: UpdateAportanteUseCase,
+    private readonly updateMisDatosAportanteUseCase: UpdateMisDatosAportanteUseCase,
     private readonly getAportanteAfiliadosByAportanteIdUseCase: GetAportanteAfiliadosByAportanteIdUseCase,
     private readonly getMoraByAportanteIdUseCase: GetMoraByAportanteIdUseCase,
     private readonly generateCertificadoPazYSalvoUseCase: GenerateCertificadoPazYSalvoUseCase,
@@ -56,6 +58,18 @@ export class AportantesService {
     authenticatedUserId: string,
   ) {
     return this.updateAportanteUseCase.execute(
+      aportanteId,
+      updateAportanteDto,
+      authenticatedUserId,
+    );
+  }
+
+  updateMisDatos(
+    aportanteId: number,
+    updateAportanteDto: CreateAportanteDto,
+    authenticatedUserId: string,
+  ) {
+    return this.updateMisDatosAportanteUseCase.execute(
       aportanteId,
       updateAportanteDto,
       authenticatedUserId,

@@ -2,6 +2,7 @@ export { GetUltimaActualizacionAportanteByIdUseCase } from './get-ultimaactualiz
 export { CreateAportanteUseCase } from './create-aportante.use-case';
 export { GetAportanteByIdUseCase } from './get-aportante-by-id.use-case';
 export { UpdateAportanteUseCase } from './update-aportante.use-case';
+export { UpdateMisDatosAportanteUseCase } from './update-mis-datos-aportante.use-case';
 export { GetAportanteAfiliadosByAportanteIdUseCase } from './get-aportante-afiliados-by-aportante-id.use-case';
 export { GetMoraByAportanteIdUseCase } from './get-mora-by-aportante-id.use-case';
 export { GenerateCertificadoPazYSalvoUseCase } from './generate-certificado-paz-y-salvo.use-case';

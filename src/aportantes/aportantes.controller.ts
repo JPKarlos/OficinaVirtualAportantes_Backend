@@ -154,6 +154,19 @@ export class AportantesCreateController {
     return this.aportantesService.getAportanteById(aportanteId, user.id);
   }
 
+  @Put(':aportanteId/mis-datos')
+  updateMisDatos(
+    @Param('aportanteId', ParseIntPipe) aportanteId: number,
+    @Body() updateAportanteDto: CreateAportanteDto,
+    @GetUser() user: UserDataResponse,
+  ) {
+    return this.aportantesService.updateMisDatos(
+      aportanteId,
+      updateAportanteDto,
+      user.id,
+    );
+  }
+
   @Put(':aportanteId')
   update(
     @Param('aportanteId', ParseIntPipe) aportanteId: number,
