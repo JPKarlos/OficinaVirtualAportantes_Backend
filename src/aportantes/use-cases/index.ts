@@ -11,3 +11,5 @@ export { GetIncapacidadesByAportanteIdUseCase } from './get-incapacidades-by-apo
 export { GetLicenciasByAportanteIdUseCase } from './get-licencias-by-aportante-id.use-case';
 export { GetSolicitudesByAportanteIdUseCase } from './get-solicitudes-by-aportante-id.use-case';
 export { CreateSolicitudUseCase } from './create-solicitud.use-case';
+export { GetComprobantePagoSoporteUseCase } from './get-comprobante-pago-soporte.use-case';
+export { GetComprobantePagoLicenciaSoporteUseCase } from './get-comprobante-pago-licencia-soporte.use-case';

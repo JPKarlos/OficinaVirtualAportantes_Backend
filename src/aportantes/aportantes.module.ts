@@ -16,6 +16,9 @@ import {
   V_LicenciasAportante,
   Solicitud,
   V_Solicitudes,
+  ComprobantePago,
+  ComprobantePagoLicencia,
+  SoportesActualizacionAportante,
 } from './entities';
 import { User } from '../auth/entities/user.entity';
 import { FtpModule } from '../common/ftp/ftp.module';
@@ -33,13 +36,15 @@ import {
   GetLicenciasByAportanteIdUseCase,
   GetSolicitudesByAportanteIdUseCase,
   CreateSolicitudUseCase,
+  GetComprobantePagoSoporteUseCase,
+  GetComprobantePagoLicenciaSoporteUseCase,
 } from './use-cases';
 import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature(
-      [V_UltimaactualizacionAportantes, V_AportanteAfiliados, V_ReporteCarteraUgppAfiliadoResumen, V_ReporteCarteraUgppDetalladoNuevoProceso, V_IncapacidadesAportante, V_LicenciasAportante, Solicitud, V_Solicitudes, Aportante, UltimaActualizacionAportantes],
+      [V_UltimaactualizacionAportantes, V_AportanteAfiliados, V_ReporteCarteraUgppAfiliadoResumen, V_ReporteCarteraUgppDetalladoNuevoProceso, V_IncapacidadesAportante, V_LicenciasAportante, Solicitud, V_Solicitudes, Aportante, UltimaActualizacionAportantes, ComprobantePago, ComprobantePagoLicencia, SoportesActualizacionAportante],
       'dbSIRIS_EPS',
     ),
     TypeOrmModule.forFeature([User], 'dbAuth'),
@@ -62,6 +67,8 @@ import { AuthModule } from '../auth/auth.module';
     GetLicenciasByAportanteIdUseCase,
     GetSolicitudesByAportanteIdUseCase,
     CreateSolicitudUseCase,
+    GetComprobantePagoSoporteUseCase,
+    GetComprobantePagoLicenciaSoporteUseCase,
   ],
   exports: [AportantesService, GetUltimaActualizacionAportanteByIdUseCase],
 })

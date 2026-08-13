@@ -24,6 +24,13 @@ interface EnvVars {
   FTP_USER: string;
   FTP_PASSWORD: string;
   FTP_PATH_SOLICITUDES: string;
+  FTP_PATH_SOPORTESAPORTANTE: string;
+  FTP_COMPROBANTES_HOST: string;
+  FTP_COMPROBANTES_PORT: number;
+  FTP_COMPROBANTES_USER: string;
+  FTP_COMPROBANTES_PASSWORD: string;
+  FTP_PATH_COMPROBANTES: string;
+  FTP_PATH_COMPROBANTESLICENCIAS: string;
   ROLE_APP: string;
   MAILJET_API_KEY: string;
   MAILJET_API_SECRET: string;
@@ -56,6 +63,15 @@ const envsSchema = joi
     FTP_USER: joi.string().required(),
     FTP_PASSWORD: joi.string().required(),
     FTP_PATH_SOLICITUDES: joi.string().default('Solicitudes'),
+    FTP_PATH_SOPORTESAPORTANTE: joi
+      .string()
+      .default('SoportesActualizacionAportante'),
+    FTP_COMPROBANTES_HOST: joi.string().required(),
+    FTP_COMPROBANTES_PORT: joi.number().required(),
+    FTP_COMPROBANTES_USER: joi.string().required(),
+    FTP_COMPROBANTES_PASSWORD: joi.string().required(),
+    FTP_PATH_COMPROBANTES: joi.string().required(),
+    FTP_PATH_COMPROBANTESLICENCIAS: joi.string().required(),
     ROLE_APP: joi.string().required(),
     MAILJET_API_KEY: joi.string().required(),
     MAILJET_API_SECRET: joi.string().required(),
@@ -99,6 +115,13 @@ export const envs = {
   ftpUser: envVars.FTP_USER,
   ftpPassword: envVars.FTP_PASSWORD,
   ftpPathSolicitudes: envVars.FTP_PATH_SOLICITUDES,
+  ftpPathSoportesAportante: envVars.FTP_PATH_SOPORTESAPORTANTE,
+  ftpComprobantesHost: envVars.FTP_COMPROBANTES_HOST,
+  ftpComprobantesPort: envVars.FTP_COMPROBANTES_PORT,
+  ftpComprobantesUser: envVars.FTP_COMPROBANTES_USER,
+  ftpComprobantesPassword: envVars.FTP_COMPROBANTES_PASSWORD,
+  ftpPathComprobantes: envVars.FTP_PATH_COMPROBANTES,
+  ftpPathComprobantesLicencias: envVars.FTP_PATH_COMPROBANTESLICENCIAS,
   roleApp: envVars.ROLE_APP,
   mailjetApiKey: envVars.MAILJET_API_KEY,
   mailjetApiSecret: envVars.MAILJET_API_SECRET,

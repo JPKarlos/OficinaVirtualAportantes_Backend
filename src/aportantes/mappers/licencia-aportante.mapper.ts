@@ -112,6 +112,8 @@ export function mapLicenciaAportanteFromSqlRow(
     estadoNovedad: readString(row, 'EstadoNovedad'),
     nroComprobante: readString(row, 'NroComprobante'),
     aportanteId: readNumber(row, 'Aportante_id'),
+    licenciasMaternidadId: readNumber(row, 'LicenciasMaternidad_id'),
+    afiliadoId: readNumber(row, 'Afiliado_id'),
   };
 }
 
@@ -145,7 +147,9 @@ export const LICENCIAS_APORTANTE_SQL = `
     [FechaPP],
     [EstadoNovedad],
     [NroComprobante],
-    [Aportante_id]
+    [Aportante_id],
+    [LicenciasMaternidad_id],
+    [Afiliado_id]
   FROM [SIRIS_EPS].[OficinaVirtualAportantes].[V_Licencias_Aportante]
   WHERE [Aportante_id] = @0
   ORDER BY [Fecha_radicacion] DESC, [apellido1] ASC, [nombre1] ASC

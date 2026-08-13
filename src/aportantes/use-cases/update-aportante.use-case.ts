@@ -15,12 +15,18 @@ import {
 } from '../dto/create-aportante.dto';
 import { Aportante } from '../entities/aportantes.entity';
 import { UltimaActualizacionAportantes } from '../entities/ultima-actualizacion-aportantes.entity';
+import { SoportesActualizacionAportante } from '../entities/soportes-actualizacion-aportante.entity';
 import { mapAportanteEntityToPayload } from '../mappers/aportante-payload.mapper';
 
 export interface UpdateAportanteResult {
   aportanteId: number;
   ultimaActualizacionId: number;
   estadoActualizacion: ActualizacionAportanteStatus;
+}
+
+export interface SoportesActualizacionData {
+  rutaSoportes: string;
+  cantidadDocumentosCargados: number;
 }
 
 @Injectable()
@@ -38,6 +44,7 @@ export class UpdateAportanteUseCase {
     aportanteId: number,
     updateAportanteDto: CreateAportanteDto,
     authenticatedUserId: string,
+    soportesData?: SoportesActualizacionData,
   ): Promise<UpdateAportanteResult> {
     const authUser = await this.userRepository.findOne({
       where: { id: authenticatedUserId },
@@ -110,6 +117,23 @@ export class UpdateAportanteUseCase {
       if (!updatedAportante || updatedAportante.aportanteId !== aportanteId) {
         throw new BadRequestException(
           'No fue posible verificar la actualización del aportante.',
+        );
+      }
+
+      if (soportesData) {
+        const soporteControlToSave = queryRunner.manager.create(
+          SoportesActualizacionAportante,
+          {
+            aportanteId: currentAportante.aportanteId,
+            rutaSoportes: soportesData.rutaSoportes,
+            cantidadDocumentosCargados: soportesData.cantidadDocumentosCargados,
+            ultimaActualizacionId: savedHistorial.ultimaActualizacionId,
+            fechaCarga: new Date(),
+          } as DeepPartial<SoportesActualizacionAportante>,
+        );
+        await queryRunner.manager.save(
+          SoportesActualizacionAportante,
+          soporteControlToSave,
         );
       }
 

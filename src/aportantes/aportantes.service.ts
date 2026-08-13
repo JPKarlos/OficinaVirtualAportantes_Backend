@@ -13,6 +13,8 @@ import {
   GetLicenciasByAportanteIdUseCase,
   GetSolicitudesByAportanteIdUseCase,
   CreateSolicitudUseCase,
+  GetComprobantePagoSoporteUseCase,
+  GetComprobantePagoLicenciaSoporteUseCase,
 } from './use-cases';
 import { CreateAportanteDto } from './dto/create-aportante.dto';
 
@@ -32,6 +34,8 @@ export class AportantesService {
     private readonly getLicenciasByAportanteIdUseCase: GetLicenciasByAportanteIdUseCase,
     private readonly getSolicitudesByAportanteIdUseCase: GetSolicitudesByAportanteIdUseCase,
     private readonly createSolicitudUseCase: CreateSolicitudUseCase,
+    private readonly getComprobantePagoSoporteUseCase: GetComprobantePagoSoporteUseCase,
+    private readonly getComprobantePagoLicenciaSoporteUseCase: GetComprobantePagoLicenciaSoporteUseCase,
   ) {}
 
   create(createAportanteDto: CreateAportanteDto, authenticatedUserId: string) {
@@ -67,11 +71,13 @@ export class AportantesService {
   updateMisDatos(
     aportanteId: number,
     updateAportanteDto: CreateAportanteDto,
+    files: Express.Multer.File[],
     authenticatedUserId: string,
   ) {
     return this.updateMisDatosAportanteUseCase.execute(
       aportanteId,
       updateAportanteDto,
+      files,
       authenticatedUserId,
     );
   }
@@ -151,5 +157,33 @@ export class AportantesService {
       observacion,
       files,
     });
+  }
+
+  getComprobantePagoSoporte(
+    aportanteId: number,
+    afiliadoId: number,
+    incapacidadId: number,
+    authenticatedUserId: string,
+  ) {
+    return this.getComprobantePagoSoporteUseCase.execute(
+      aportanteId,
+      afiliadoId,
+      incapacidadId,
+      authenticatedUserId,
+    );
+  }
+
+  getComprobantePagoLicenciaSoporte(
+    aportanteId: number,
+    afiliadoId: number,
+    licenciasMaternidadId: number,
+    authenticatedUserId: string,
+  ) {
+    return this.getComprobantePagoLicenciaSoporteUseCase.execute(
+      aportanteId,
+      afiliadoId,
+      licenciasMaternidadId,
+      authenticatedUserId,
+    );
   }
 }

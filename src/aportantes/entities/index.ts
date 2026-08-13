@@ -8,3 +8,6 @@ export { Solicitud } from './solicitud.entity';
 export { V_Solicitudes } from './v_solicitudes.entity';
 export { Aportante } from './aportantes.entity';
 export { UltimaActualizacionAportantes } from './ultima-actualizacion-aportantes.entity';
+export { ComprobantePago } from './comprobante-pago.entity';
+export { ComprobantePagoLicencia } from './comprobante-pago-licencia.entity';
+export { SoportesActualizacionAportante } from './soportes-actualizacion-aportante.entity';

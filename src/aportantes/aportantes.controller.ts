@@ -62,6 +62,30 @@ export class AportantesCreateController {
     );
   }
 
+  @Get(':aportanteId/afiliados/:afiliadoId/incapacidades/:incapacidadId/soporte-pago')
+  async getSoporteComprobantePago(
+    @Param('aportanteId', ParseIntPipe) aportanteId: number,
+    @Param('afiliadoId', ParseIntPipe) afiliadoId: number,
+    @Param('incapacidadId', ParseIntPipe) incapacidadId: number,
+    @GetUser() user: UserDataResponse,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const { fileName, buffer } =
+      await this.aportantesService.getComprobantePagoSoporte(
+        aportanteId,
+        afiliadoId,
+        incapacidadId,
+        user.id,
+      );
+
+    res.set({
+      'Content-Type': 'application/octet-stream',
+      'Content-Disposition': `attachment; filename="${fileName}"`,
+    });
+
+    return new StreamableFile(buffer);
+  }
+
   @Get(':aportanteId/licencias')
   getLicencias(
     @Param('aportanteId', ParseIntPipe) aportanteId: number,
@@ -71,6 +95,30 @@ export class AportantesCreateController {
       aportanteId,
       user.id,
     );
+  }
+
+  @Get(':aportanteId/afiliados/:afiliadoId/licencias/:licenciasMaternidadId/soporte-pago')
+  async getSoporteComprobantePagoLicencia(
+    @Param('aportanteId', ParseIntPipe) aportanteId: number,
+    @Param('afiliadoId', ParseIntPipe) afiliadoId: number,
+    @Param('licenciasMaternidadId', ParseIntPipe) licenciasMaternidadId: number,
+    @GetUser() user: UserDataResponse,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const { fileName, buffer } =
+      await this.aportantesService.getComprobantePagoLicenciaSoporte(
+        aportanteId,
+        afiliadoId,
+        licenciasMaternidadId,
+        user.id,
+      );
+
+    res.set({
+      'Content-Type': 'application/octet-stream',
+      'Content-Disposition': `attachment; filename="${fileName}"`,
+    });
+
+    return new StreamableFile(buffer);
   }
 
   @Get(':aportanteId/solicitudes')
@@ -155,14 +203,22 @@ export class AportantesCreateController {
   }
 
   @Put(':aportanteId/mis-datos')
+  @UseInterceptors(
+    FilesInterceptor('files', 10, {
+      storage: memoryStorage(),
+      limits: { fileSize: 10 * 1024 * 1024 },
+    }),
+  )
   updateMisDatos(
     @Param('aportanteId', ParseIntPipe) aportanteId: number,
     @Body() updateAportanteDto: CreateAportanteDto,
+    @UploadedFiles() files: Express.Multer.File[],
     @GetUser() user: UserDataResponse,
   ) {
     return this.aportantesService.updateMisDatos(
       aportanteId,
       updateAportanteDto,
+      files ?? [],
       user.id,
     );
   }

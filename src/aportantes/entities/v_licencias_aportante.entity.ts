@@ -93,4 +93,10 @@ export class V_LicenciasAportante {
 
   @Column({ name: 'Aportante_id', type: 'int', nullable: true })
   aportanteId: number;
+
+  @Column({ name: 'LicenciasMaternidad_id', type: 'int', nullable: true })
+  licenciasMaternidadId: number;
+
+  @Column({ name: 'Afiliado_id', type: 'int', nullable: true })
+  afiliadoId: number;
 }

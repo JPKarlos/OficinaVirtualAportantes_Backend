@@ -30,6 +30,8 @@ export class LicenciaAportanteItemDto {
   estadoNovedad: string | null;
   nroComprobante: string | null;
   aportanteId: number | null;
+  licenciasMaternidadId: number | null;
+  afiliadoId: number | null;
 }
 
 export class LicenciasAportanteListResponseDto {
