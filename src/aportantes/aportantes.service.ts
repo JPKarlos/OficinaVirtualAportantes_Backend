@@ -3,7 +3,7 @@ import {
   GetUltimaActualizacionAportanteByIdUseCase,
   CreateAportanteUseCase,
   GetAportanteByIdUseCase,
-  UpdateAportanteUseCase,
+  UpdateUltimaActualizacionAportanteUseCase,
   UpdateMisDatosAportanteUseCase,
   GetAportanteAfiliadosByAportanteIdUseCase,
   GetMoraByAportanteIdUseCase,
@@ -24,7 +24,7 @@ export class AportantesService {
     private readonly createAportanteUseCase: CreateAportanteUseCase,
     private readonly getUltimaActualizacionAportanteByIdUseCase: GetUltimaActualizacionAportanteByIdUseCase,
     private readonly getAportanteByIdUseCase: GetAportanteByIdUseCase,
-    private readonly updateAportanteUseCase: UpdateAportanteUseCase,
+    private readonly updateUltimaActualizacionAportanteUseCase: UpdateUltimaActualizacionAportanteUseCase,
     private readonly updateMisDatosAportanteUseCase: UpdateMisDatosAportanteUseCase,
     private readonly getAportanteAfiliadosByAportanteIdUseCase: GetAportanteAfiliadosByAportanteIdUseCase,
     private readonly getMoraByAportanteIdUseCase: GetMoraByAportanteIdUseCase,
@@ -38,9 +38,14 @@ export class AportantesService {
     private readonly getComprobantePagoLicenciaSoporteUseCase: GetComprobantePagoLicenciaSoporteUseCase,
   ) {}
 
-  create(createAportanteDto: CreateAportanteDto, authenticatedUserId: string) {
+  create(
+    createAportanteDto: CreateAportanteDto,
+    files: Express.Multer.File[],
+    authenticatedUserId: string,
+  ) {
     return this.createAportanteUseCase.execute(
       createAportanteDto,
+      files,
       authenticatedUserId,
     );
   }
@@ -59,11 +64,13 @@ export class AportantesService {
   update(
     aportanteId: number,
     updateAportanteDto: CreateAportanteDto,
+    files: Express.Multer.File[],
     authenticatedUserId: string,
   ) {
-    return this.updateAportanteUseCase.execute(
+    return this.updateUltimaActualizacionAportanteUseCase.execute(
       aportanteId,
       updateAportanteDto,
+      files,
       authenticatedUserId,
     );
   }

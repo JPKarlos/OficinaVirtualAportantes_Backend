@@ -25,11 +25,18 @@ export class AportantesCreateController {
   constructor(private readonly aportantesService: AportantesService) {}
 
   @Post()
+  @UseInterceptors(
+    FilesInterceptor('files', 10, {
+      storage: memoryStorage(),
+      limits: { fileSize: 10 * 1024 * 1024 },
+    }),
+  )
   create(
     @Body() createAportanteDto: CreateAportanteDto,
+    @UploadedFiles() files: Express.Multer.File[],
     @GetUser() user: UserDataResponse,
   ) {
-    return this.aportantesService.create(createAportanteDto, user.id);
+    return this.aportantesService.create(createAportanteDto, files ?? [], user.id);
   }
 
   @Get(':aportanteId/afiliados')
@@ -224,14 +231,22 @@ export class AportantesCreateController {
   }
 
   @Put(':aportanteId')
+  @UseInterceptors(
+    FilesInterceptor('files', 10, {
+      storage: memoryStorage(),
+      limits: { fileSize: 10 * 1024 * 1024 },
+    }),
+  )
   update(
     @Param('aportanteId', ParseIntPipe) aportanteId: number,
     @Body() updateAportanteDto: CreateAportanteDto,
+    @UploadedFiles() files: Express.Multer.File[],
     @GetUser() user: UserDataResponse,
   ) {
     return this.aportantesService.update(
       aportanteId,
       updateAportanteDto,
+      files ?? [],
       user.id,
     );
   }
