@@ -54,4 +54,10 @@ export class V_AportanteAfiliados {
 
   @Column({ name: 'EstadoRelacionLaboral', type: 'int', nullable: true })
   estadoRelacionLaboral: number;
+
+  @Column({ name: 'fechafiliacion', type: 'date', nullable: true })
+  fechafiliacion: string | null;
+
+  @Column({ name: 'DesRegimen', type: 'varchar', length: 256, nullable: true })
+  desRegimen: string | null;
 }

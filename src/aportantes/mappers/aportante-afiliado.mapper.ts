@@ -22,6 +22,8 @@ export function mapAportanteAfiliadoToDto(
     nombreRazonSocial: row.nombreRazonSocial ?? null,
     aportanteId: row.aportanteId ?? null,
     estadoRelacionLaboral: row.estadoRelacionLaboral ?? null,
+    fechafiliacion: row.fechafiliacion ?? null,
+    desRegimen: row.desRegimen ?? null,
   };
 }
 
